@@ -727,12 +727,14 @@ elseif(CMAKE_SYSTEM_NAME STREQUAL "CafeOS")
     )
 else()
     find_package(SDL2)
+    find_package(libzip)
     set(THREADS_PREFER_PTHREAD_FLAG ON)
     find_package(Threads REQUIRED)
  	set(ADDITIONAL_LIBRARY_DEPENDENCIES
         "libultraship;"
 		"ZAPDLib;"
 		SDL2::SDL2
+		libzip::zip
         "$<$<BOOL:${BUILD_REMOTE_CONTROL}>:SDL2_net::SDL2_net>"
 		${CMAKE_DL_LIBS}
 		Threads::Threads
